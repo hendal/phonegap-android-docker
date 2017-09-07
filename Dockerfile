@@ -1,11 +1,5 @@
 FROM openjdk:8-jdk
-#FROM jdk-test:latest
-#RUN ls /home
-
-# RUN useradd -u 1000 -M -s /bin/bash android
-# RUN chown 1000 /opt
-
-# USER android 
+ 
 ENV ANDROID_COMPILE_SDK="25" ANDROID_BUILD_TOOLS="24.0.0" NODE_VER="6.11.3" ANDROID_SDK_TOOLS="24.4.1" PATH="/opt/node/bin:/opt/android-sdk-linux/tools:/opt/android-sdk-linux/tools/bin:${PATH}"
 
 RUN cd /opt && \ 

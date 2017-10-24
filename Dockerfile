@@ -20,3 +20,4 @@ RUN cd /opt && \
 
 RUN touch ~/.android/repositories.cfg && sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle"
 
+RUN echo yes | sdkmanager --licenses

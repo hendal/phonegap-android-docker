@@ -17,5 +17,5 @@ RUN cd /opt && \
     yes | sdkmanager --licenses && \
     npm install -g phonegap cordova
 
-RUN sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle"
+RUN yes | sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle"
 

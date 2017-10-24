@@ -1,9 +1,10 @@
 FROM openjdk:8-jdk
  
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+RUN apt-get --quiet update --yes && \
+    apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 gradle yarn apt-transport-https && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get --quiet update --yes && \
-    apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 gradle yarn && \
+    apt-get --quiet install --yes yarn && \
     apt-get clean
 
 ENV ANDROID_COMPILE_SDK="26" ANDROID_BUILD_TOOLS="24.0.0" ANDROID_SDK_TOOLS="3859397" ANDROID_HOME="/opt/tools" NODE_VER="6.11.3" PATH="/opt/node/bin:/opt/tools:/opt/tools/bin:${PATH}"

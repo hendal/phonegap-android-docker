@@ -8,7 +8,7 @@ RUN apt-get --quiet update --yes && \
     apt-get --quiet install --yes yarn && \
     apt-get clean
 
-ENV ANDROID_COMPILE_SDK="26" ANDROID_BUILD_TOOLS="24.0.0" ANDROID_SDK_TOOLS="3859397" ANDROID_HOME="/opt/tools" NODE_VER="6.11.3" PATH="/opt/node/bin:/opt/tools:/opt/tools/bin:${PATH}"
+ENV ANDROID_COMPILE_SDK="27" ANDROID_BUILD_TOOLS="27.0.0" ANDROID_SDK_TOOLS="3859397" ANDROID_HOME="/opt/tools" NODE_VER="6.11.3" PATH="/opt/node/bin:/opt/tools:/opt/tools/bin:${PATH}"
 
 RUN cd /opt && \
     wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
@@ -19,6 +19,6 @@ RUN cd /opt && \
     yes | sdkmanager --licenses && \
     npm install -g phonegap cordova ionic
 
-RUN touch ~/.android/repositories.cfg && sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle"
+RUN touch ~/.android/repositories.cfg && sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle" "build-tools;$ANDROID_BUILD_TOOLS" 
 
 RUN echo yes | sdkmanager --licenses

@@ -8,7 +8,7 @@ RUN apt-get --quiet update --yes && \
     apt-get --quiet install --yes yarn && \
     apt-get clean
 
-ENV ANDROID_COMPILE_SDK="27" ANDROID_BUILD_TOOLS="27.0.0" ANDROID_SDK_TOOLS="3859397" ANDROID_HOME="/opt/tools" NODE_VER="6.11.3" PATH="/opt/node/bin:/opt/tools:/opt/tools/bin:${PATH}"
+ENV ANDROID_COMPILE_SDK="27" ANDROID_BUILD_TOOLS="27.0.0" ANDROID_SDK_TOOLS="3859397" ANDROID_HOME="/opt" NODE_VER="6.11.3" PATH="/opt/node/bin:/opt/tools:/opt/tools/bin:${PATH}"
 
 RUN cd /opt && \
     wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \

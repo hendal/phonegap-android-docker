@@ -2,6 +2,7 @@ FROM openjdk:8-jdk
  
 RUN apt-get --quiet update --yes && \
     apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 gradle yarn apt-transport-https && \
+    apt remove cmdtest && \
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     apt-get --quiet install --yes yarn && \
@@ -16,7 +17,7 @@ RUN cd /opt && \
     tar -xf node.tar.xz	&& rm node.tar.xz && \
     mv /opt/node-v${NODE_VER}-linux-x64 /opt/node && \
     yes | sdkmanager --licenses && \
-    npm install -g phonegap cordova
+    npm install -g phonegap cordova ionic
 
 RUN touch ~/.android/repositories.cfg && sdkmanager "platform-tools" "platforms;android-${ANDROID_COMPILE_SDK}" "extras;google;google_play_services" "extras;google;m2repository" "extras;android;m2repository" "tools" "ndk-bundle"
 
